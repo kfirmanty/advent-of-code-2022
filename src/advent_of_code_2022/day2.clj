@@ -20,17 +20,17 @@
 
 (defn solve-1a []
   (let [rules {:strategy {"X" :rock
-                         "Y" :paper
+                          "Y" :paper
                           "Z" :scissors
                           "A" :rock
                           "B" :paper
                           "C" :scissors}
-              :points {:rock 1
-                       :paper 2
-                       :scissors 3}
-              :scoring {:loose 0
-                        :draw 3
-                        :win 6}}]
+               :points {:rock 1
+                        :paper 2
+                        :scissors 3}
+               :scoring {:loose 0
+                         :draw 3
+                         :win 6}}]
     (->> (parse-input)
          (map #(play-game-1 rules %))
          (reduce +))))
@@ -52,17 +52,17 @@
                   :scissors :paper})
 (defn solve-2 []
   (let [rules {:strategy {"X" (fn [m] (get loosing-map m))
-                         "Y"  identity
+                          "Y"  identity
                           "Z" (fn [m] (get (rmap loosing-map) m))
                           "A" (fn [& _] :rock)
                           "B" (fn [& _] :paper)
                           "C" (fn [& _] :scissors)}
-              :points {:rock 1
-                       :paper 2
-                       :scissors 3}
-              :scoring {:loose 0
-                        :draw 3
-                        :win 6}}]
+               :points {:rock 1
+                        :paper 2
+                        :scissors 3}
+               :scoring {:loose 0
+                         :draw 3
+                         :win 6}}]
     (->> (parse-input)
          (map #(play-game-2 rules %))
          (reduce +))))
